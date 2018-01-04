@@ -1,0 +1,46 @@
+# Learning-Java-Beginner-Stage-
+Documenting code as I begin to learn java
+package apples;
+import java.util.Scanner;
+import java.util.Random;
+
+public class class1 {
+public static void main (String[] args) {
+
+System.out.println("This program will calculate which of 3 cars inoutted by the user gets the best gas mileage in ranking order");
+
+Scanner input = new Scanner(System.in);
+
+int carOne = 0;
+int carTwo = 0;
+int carThree = 0;
+
+
+
+	System.out.println("Input first car miles per gallon");
+	carOne = input.nextInt();
+	
+	System.out.println("Input second car  miles per gallon");
+	carTwo = input.nextInt();
+	
+	System.out.println("Input third car  miles per gallon");
+	carThree = input.nextInt();
+	
+if (carOne > carTwo && carOne > carThree) {
+	System.out.println("Car one wins!");
+}
+	if (carTwo > carOne && carTwo > carThree) {
+	System.out.println("Car two wins!");
+	
+}
+if(carThree > carTwo && carThree > carOne) {
+	System.out.println("Car three wins!");
+}
+else {
+	System.out.println("Tie");
+}
+
+	
+
+
+}
