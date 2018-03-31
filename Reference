@@ -1,0 +1,75 @@
+import java.security.SecureRandom;
+
+public class Craps {
+	public static final SecureRandom randomNumber = new SecureRandom(); // random number generator to simulate dice in method rollDice
+	private enum Status {CONTINUE,WON,LOST};
+	
+	//these integers represent rolls of the dice relevant to the game of craps
+	private static final int SNAKE_EYES = 2;
+	private static final int TREY = 3;
+	private static final int SEVEN = 7;
+	private static final int YO_LEVEN = 11;
+	private static final int BOX_CARS = 12;
+	
+	public static void main (String[] args) {
+		int userPoint = 0; //user point if he or she doesnt win or lose on the first roll
+		Status gameStatus;
+		int sumDice = rollDice(); // uses this as a selection statement to determin to keep rolling, win , or lose as stored in enum status
+		
+		switch(sumDice) {
+		case SEVEN: // win game if roll seven on first roll
+		case YO_LEVEN:
+			gameStatus = Status.WON; //uses won object to determine status of game
+			break;
+		case SNAKE_EYES: // lose if roll 2, 3, or 12
+		case TREY:
+		case BOX_CARS:
+			gameStatus = Status.LOST;
+			break;
+		default:
+			gameStatus = Status.CONTINUE;
+			break;
+					
+		
+		}
+		
+		while(gameStatus == Status.CONTINUE) {
+			sumDice = rollDice();
+			
+			if(sumDice == userPoint) {
+				gameStatus = Status.WON;
+			}
+			
+			else {
+				if(sumDice == SEVEN) {
+					gameStatus = Status.LOST;
+					
+				}
+				
+			}
+			
+			}
+		
+		if(gameStatus == Status.WON) {
+			System.out.println("You win");
+		}
+		
+		else
+			System.out.println("You lose");
+		}
+		
+		
+		
+	
+	
+	public static int rollDice() {
+		int dice1 = 1 +  randomNumber.nextInt(6);
+		int dice2 = 1 +  randomNumber.nextInt(6);
+		int sum = dice1 + dice2;
+		System.out.printf("The player rolled a %d On the first die and a %d on the second die | Score = %d%n" , dice1, dice2, sum);
+		return sum;
+		
+	}
+	
+	
+}
